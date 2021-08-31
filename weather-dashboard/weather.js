@@ -32,11 +32,12 @@ function handleClick(event) {
       cities.push(city);
       localStorage.setItem("cities", JSON.stringify(cities));
     }
+    
+    getCurrentWeatherAPI(city);
+    getFiveDayAPI(city);
     cityName.value = "";
     dashboardEl.textContent = "";
     fiveDayForcast.textContent = "";
-    getCurrentWeatherAPI(city);
-    getFiveDayAPI(city);
     //created history city list
     var citiesLocal = JSON.parse(localStorage.getItem("cities"));
 
