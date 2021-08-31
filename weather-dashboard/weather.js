@@ -24,8 +24,8 @@ window.onload = function () {
   }
 };
 
-function handleClick() {
-  //event.preventDefault()
+function handleClick(event) {
+  event.preventDefault();
   city = cityName.value;
   if (city) {
     if (!cities.includes(city)) {
@@ -42,17 +42,14 @@ function handleClick() {
 
     for (var i = 0; i < citiesLocal.length; i++) {
       var cityBtn = document.createElement("button");
-      cityBtn.textContent = citiesLocal[i];
-      if (!citiesLocal.includes(city)) {
+      cityBtn.textContent = citiesLocal[i];}
         ulEl.appendChild(cityBtn);
         cityBtn.setAttribute(
           "class",
-          "btn btn-secondary btn-lg btn-block ml-0"
-        );
-        ulEl.setAttribute("class", "pl-0");
-      }
+          "btn btn-secondary btn-lg btn-block ml-0");
+          ulEl.setAttribute("class", "pl-0");
     }
-  } else {
+  else {
     alert("please put in a city");
   }
 }
