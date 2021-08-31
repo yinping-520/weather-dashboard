@@ -112,7 +112,7 @@ function getCurrentWeatherAPI(lastPlace) {
 }
 
 function getFiveDayAPI(city) {
-  var fiveDayApiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&cnt=6&appid=${APIKey}`;
+  var fiveDayApiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&cnt=40&appid=${APIKey}`;
   fetch(fiveDayApiUrl)
     .then(function (response) {
       return response.json();
@@ -121,7 +121,7 @@ function getFiveDayAPI(city) {
       console.log(data);
       console.log(data.list[1].weather[0].icon);
 
-      for (var i = 0; i < 5; i++) {
+      for (var i = 0; i < 40; i+=8) {
         var dailyEl = document.createElement("li");
         var fiveDayWeather = {
           date: moment(data.list[i].dt_txt).format("M/D/YYYY"),
@@ -150,11 +150,11 @@ function getFiveDayAPI(city) {
 
         fiveDayForcast.appendChild(dailyEl);
         var list = document.querySelectorAll("li");
-        list[i].setAttribute(
+        list[i/8].setAttribute(
           "style",
           "display:flex; list-style:none; flex-direction: row; font-size:20px; background-color: rgb(20, 20, 48); color: white; margin:10px; padding:3px; flex-wrap:wrap"
         );
-        list[i].setAttribute("class", "col-2 h-50 w-25 p-2");
+        list[i/8].setAttribute("class", "col-2 h-50 w-25 p-2");
       }
     });
 }
