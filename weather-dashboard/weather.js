@@ -78,7 +78,10 @@ function getCurrentWeatherAPI(lastPlace) {
       var wind = data.wind.speed + " MPH";
       var temp = data.main.temp + " °F";
       var humidity = data.main.humidity + "%";
-      var time = "( " + moment(data.dt, "X").format("M/D/YYYY") + " )☁";
+      var time = "( " + moment(data.dt, "X").format("M/D/YYYY") + " )";
+      var lat = data.coord.lat;
+      var lon = data.coord.lon;
+      console.log(lon);
 
       var nameDisplay = document.createElement("p");
       nameDisplay.textContent = name;
@@ -108,6 +111,28 @@ function getCurrentWeatherAPI(lastPlace) {
       dashboardEl.appendChild(windDisplay);
       dashboardEl.appendChild(humidityDis);
       //console.log(data);
+      fetch(
+        `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=${APIKey}`
+      )
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          console.log(data);
+          var currentWeatherIcon = data.current.weather[0].icon;
+          var currentWeatherUvi = data.current.uvi;
+          //console.log(currentWeatherUvi)
+          var uviEl = document.createElement("p");
+          var iconEl = document.createElement("img");
+          dashboardEl.position = "relative"
+          iconEl.src = `https://openweathermap.org/img/wn/${currentWeatherIcon}@2x.png`;
+          iconEl.setAttribute("style", "width:100px; height:100px; position:absolute; margin-left:450px; margin-top: -200px")
+          uviEl.textContent = "UVI: " + currentWeatherUvi;
+          uviEl.setAttribute("style", "background-color:green; font-size:20px");
+
+          dashboardEl.appendChild(iconEl);
+          dashboardEl.appendChild(uviEl);
+        });
     });
 }
 
@@ -118,10 +143,10 @@ function getFiveDayAPI(city) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
-      console.log(data.list[1].weather[0].icon);
+      //console.log(data);
+      //console.log(data.list[1].weather[0].icon);
 
-      for (var i = 0; i < 40; i+=8) {
+      for (var i = 0; i < 40; i += 8) {
         var dailyEl = document.createElement("li");
         var fiveDayWeather = {
           date: moment(data.list[i].dt_txt).format("M/D/YYYY"),
@@ -130,7 +155,7 @@ function getFiveDayAPI(city) {
           wind: data.list[i].wind.speed + " MPH",
           humidity: data.list[i].main.humidity + " %",
         };
-        console.log(fiveDayWeather.icon);
+        //console.log(fiveDayWeather.icon);
         var weatherInfo =
           fiveDayWeather.date +
           "<hr>" +
@@ -150,11 +175,11 @@ function getFiveDayAPI(city) {
 
         fiveDayForcast.appendChild(dailyEl);
         var list = document.querySelectorAll("li");
-        list[i/8].setAttribute(
+        list[i / 8].setAttribute(
           "style",
           "display:flex; list-style:none; flex-direction: row; font-size:20px; background-color: rgb(20, 20, 48); color: white; margin:10px; padding:3px; flex-wrap:wrap"
         );
-        list[i/8].setAttribute("class", "col-2 h-50 w-25 p-2");
+        list[i / 8].setAttribute("class", "col-2 h-50 w-25 p-2");
       }
     });
 }
