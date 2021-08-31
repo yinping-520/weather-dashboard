@@ -70,7 +70,7 @@ ulEl.addEventListener("click", function (event) {
 
 function getCurrentWeatherAPI(lastPlace) {
   var queryURL =
-    "http://api.openweathermap.org/data/2.5/weather?q=" +
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
     lastPlace +
     "&units=imperial&appid=" +
     APIKey;
@@ -146,7 +146,7 @@ function getFiveDayAPI(city) {
           "<hr>" +
           fiveDayWeather.humidity;
         var iconImage = document.createElement("img");
-        iconImage.src = `http://openweathermap.org/img/wn/${fiveDayWeather.icon}@2x.png`;
+        iconImage.src = `https://openweathermap.org/img/wn/${fiveDayWeather.icon}@2x.png`;
         var weatherInformation = document.createElement("p");
         weatherInformation.innerHTML = weatherInfo;
 
