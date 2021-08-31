@@ -141,7 +141,7 @@ function getFiveDayAPI(city) {
           fiveDayWeather.humidity;
         var iconImage = document.createElement("img");
         iconImage.src = `https://openweathermap.org/img/wn/${fiveDayWeather.icon}@2x.png`;
-        iconImage.setAttribute("class", "img-fluid");
+        iconImage.setAttribute("style", "width:100px; height:100px");
         var weatherInformation = document.createElement("p");
         weatherInformation.innerHTML = weatherInfo;
 
