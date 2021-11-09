@@ -1,5 +1,7 @@
 # weather-dashboard
 
+## [Live Website/Deployed Link](https://yinping-520.github.io/weather-dashboard/)
+
 ## User Story
 
 ```
@@ -25,13 +27,15 @@ This application has the following features:
 
 Clone Repository:
 
-git clone 
+This program can be run through a browser using the above link to the the deployed application. Alternatively, to run this application locally you will need to:
+
+git clone git@github.com:yinping-520/weather-dashboard.git
+
 
 ## Outcome
 ![screenshot](weather-dashboard/mockup.png)
 
-## Links
-[deploy link](https://yinping-520.github.io/weather-dashboard/)
+
 
 [github](https://github.com/yinping-520/weather-dashboard)
 
