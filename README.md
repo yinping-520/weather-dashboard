@@ -2,6 +2,9 @@
 
 ## [Live Website/Deployed Link](https://yinping-520.github.io/weather-dashboard/)
 
+## Summary
+This is a weather forecast application.
+
 ## User Story
 
 ```
@@ -22,6 +25,7 @@ This application has the following features:
 * WHEN user view future weather conditions for that city, this application presents a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity.
 
 * WHEN user click on a city in the search history, this application again presents current and future conditions for that city.
+
 
 ## Installation
 
